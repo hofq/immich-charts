@@ -26,7 +26,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       - name: Get bitnami tag
-        run: . /images/pgvecto-bitnami/bitnami-tag.sh
+        run: . images/pgvecto-bitnami/bitnami-tag.sh
 
       - name: Build and Push Versioned Docker Image
         id: build-and-push
