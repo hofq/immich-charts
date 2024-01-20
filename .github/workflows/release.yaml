@@ -10,7 +10,7 @@ jobs:
   build-postgres:
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: ${{ github.repository }}
+      IMAGE_NAME: ${{ github.repository }}/pg-bitnami-vecto-rs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
