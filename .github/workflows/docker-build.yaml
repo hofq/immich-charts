@@ -36,4 +36,4 @@ jobs:
           tags: ${{ env.BITNAMI_TAG }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            BITNAMI_TAG=$BITNAMI_TAG
+            BITNAMI_TAG=${{ env.BITNAMI_TAG }}
