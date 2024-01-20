@@ -1,5 +1,5 @@
 # Main Workflow for Building & Publishing Github Containers to ghcr.io
-name: Docker Build & Publish to GitHub Container Registry
+name: Docker Build & Publish Bitnami Postgres with pgvecto-rs to GitHub Container Registry
 on:
   push:
     branches:
@@ -8,7 +8,15 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 jobs:
+  get-psql-img-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get bitnami tag
+      run: . images/pgvecto-bitnami/bitnami-tag.sh
+    - name: Set bitnami tag as var
+      run: echo "::set-output bitnamiTag=${BITNAMI_TAG}"
   build-and-push-docker-image:
+    needs: get-psql-img-version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,15 +33,12 @@ jobs:
         uses: docker/metadata-action@v2
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-      - name: Get bitnami tag
-        run: . images/pgvecto-bitnami/bitnami-tag.sh
-
       - name: Build and Push Versioned Docker Image
         id: build-and-push
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ env.BITNAMI_TAG }}
+          tags: ${{ needs.get-psql-img-version.outputs.bitnamiTag }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            BITNAMI_TAG=${{ env.BITNAMI_TAG }}
+            BITNAMI_TAG=${{ needs.get-psql-img-version.outputs.bitnamiTag }}

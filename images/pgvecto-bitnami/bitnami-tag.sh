@@ -8,5 +8,4 @@ chmod +x yq_linux_amd64
 
 # Export Vars
 export BITNAMI_TAG=$(./yq_linux_amd64 '.postgresql.image.tag' ../../charts/immich/values.yaml)
-export PGVECTOR_RS_VERSION="0.1.12"
-echo $BITNAMI_TAG $PGVECTOR_RS_VERSION
+echo $BITNAMI_TAG
