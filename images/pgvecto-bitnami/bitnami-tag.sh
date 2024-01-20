@@ -8,4 +8,4 @@ chmod +x yq_linux_amd64
 
 # Export Vars
 export BITNAMI_TAG=$(./yq_linux_amd64 '.postgresql.image.tag' ../../charts/immich/values.yaml)
-echo $BITNAMI_TAG
+echo BITNAMI_TAG=$BITNAMI_TAG
