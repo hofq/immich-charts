@@ -33,7 +33,7 @@ jobs:
         with:
           push: true
           file: ./images/pgvecto-bitnami/Dockerfile
-          tags: ${{ env.BITNAMI_TAG }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.BITNAMI_TAG }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             BITNAMI_TAG=${{ env.BITNAMI_TAG }}
