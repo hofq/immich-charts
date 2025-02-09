@@ -8,6 +8,42 @@ entries:
           description: Removed unused library mount from machine learning container
     apiVersion: v2
     appVersion: v1.91.4
+    created: "2025-02-09T22:21:05.843583698Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.4.0
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.24
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.4.0
+    description: A chart to power Immich (immich.app) running on kubernetes
+    digest: d80c335b075f13e9aac2a65b2f28ae1ce037326fa5cc17905bf312da7381c38a
+    home: https://immich.app/
+    icon: https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg
+    maintainers:
+    - email: 5434875+PixelJonas@users.noreply.github.com
+      name: PixelJonas
+    - email: immich@bo0tzz.me
+      name: bo0tzz
+    name: immich
+    sources:
+    - https://github.com/immich-app/immich-charts/tree/main/charts/immich
+    - https://github.com/immich-app/immich
+    urls:
+    - https://github.com/hofq/immich-charts/releases/download/immich-0.9.0/immich-0.9.0.tgz
+    version: 0.9.0
+  - annotations:
+      artifacthub.io/category: storage
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Removed unused library mount from machine learning container
+    apiVersion: v2
+    appVersion: v1.91.4
     created: "2024-01-20T19:49:52.098982964Z"
     dependencies:
     - name: common
@@ -37,4 +73,4 @@ entries:
     urls:
     - https://github.com/hofq/immich-charts/releases/download/immich-0.3.1/immich-0.3.1.tgz
     version: 0.3.1
-generated: "2024-01-20T19:49:52.098993133Z"
+generated: "2025-02-09T22:21:05.843602163Z"
